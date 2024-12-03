@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <!-- Fullpage CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.22/fullpage.css"
+        integrity="sha512-AIwt5sjXSKDo4t0KSQ/eAuy43kQMc1hYtIKLxaFrHd26nQFzMo1FJdBIickVyGXnhm2xB2OOYBqMBgu3dBU4KA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <!-- Jquery UI CSS -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/themes/smoothness/jquery-ui.css">
+    <!-- MapBox CSS -->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet'/>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <nav id="navbar">
+        <img src="./imgs/nz-tourism.webp" alt="New Zealand Tourism Logo">
+    </nav>
+    <div id="fullpage">
+        <div class="section">
+            <div class="slide" id="slide1">
+                <div class="header">
+                    <img src="./imgs/sun.svg" alt="sun" id="sun">
+                    <img src="./imgs/waves1.svg" alt="waves 1" id="waves1">
+                    <h1 id="scrollText">TAHA MOANA</h1>
+                    <img src="./imgs/waves2.svg" alt="waves 2" id="waves2">
+                    <img src="./imgs/waves3.svg" alt="waves 3" id="waves3">
+                    <img src="./imgs/waves4.svg" alt="waves 4" id="waves4">
+                    <img src="./imgs/waves5.svg" alt="waves 5" id="waves5"> 
+                </div>
+
+                <div class="form-container">
+                    <h2>Find a place</h2>
+
+                    <form class="filter-container">
+
+                        <!-- Number of Guests -->
+                        <div class="filter">
+                            <label for="guests">Number of Guests:</label>
+                            <br>
+                            <select name="guests" id="guests" class="select">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+
+                        <!--Type of Accommodation-->
+                        <div class="filter">
+                            <label for="accommodation">Type of Accommodation:</label>
+                            <br>
+                            <select name="accommodation" id="accommodation" class="select">
+                                <option value="">Any</option>
+                                <option value="Motel">Motel</option>
+                                <option value="Hotel">Hotel</option>
+                                <option value="Hostel">Hostel</option>
+                                <option value="House">House</option>
+                            </select>
+                        </div>
+
+                        <!--Type of Beach-->
+                        <div class="filter">
+                            <label for="beach">Type of Beach:</label>
+                            <br>
+                            <select name="beach" id="beach" class="select">
+                                <option value="">Any</option>
+                                <option value="Kid Friendly">Kid Friendly</option>
+                                <option value="Surf Friendly">Surf Friendly</option>
+                                <option value="Fishing">Fishing</option>
+                                <option value="Snorkeling">Snorkeling</option>
+                                <option value="Vehicle Access">Vehicle Access</option>
+                            </select>
+                        </div>
+
+                        <div class="date-box">
+                            <!-- Start Date -->
+                            <div class="filter">
+                                <label for="startDate">Start Date:</label>
+                                <br>
+                                <input type="text" id="startDate" name="startDate" class="date-select">
+                            </div>
+
+                            <!-- End Date -->
+                            <div class="filter">
+                                <label for="endDate">End Date:</label>
+                                <br>
+                                <input type="text" id="endDate" name="endDate" class="date-select">
+                            </div>
+                        </div>
+
+                        <button id="searchBtn">Search Rooms</button>
+
+                        <div id="errorMessage"></div>
+                    </form>
+
+                </div>
+
+                <footer>
+                    <div class="footer-section">
+                        <h3>Find us on</h3>
+                        <p><i class="fa-brands fa-x-twitter"></i> X 
+                            <br>
+                            <i class="fa-brands fa-instagram"></i> Instagram 
+                            <br>
+                            <i class="fa-brands fa-facebook"></i> Facebook 
+                            <br>
+                            <i class="fa-brands fa-youtube"></i> Youtube
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Contact Us</h3>
+                        <p>Site Feedback
+                            <br>
+                            Need Help?  
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Help</h3>
+                        <p>FAQ
+                            <br>
+                            About Us
+                            <br>
+                            Adding your business
+                            <br>
+                            Terms of Use
+                            <br>
+                            Privacy Policy
+                            <br>
+                            Cookies
+                            <br>
+                            Manage privacy settings
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Our other Sites</h3>
+                        <p> Media
+                            <br>
+                            newzealand.com 
+                            <br>
+                            The Visual Library
+                            <br>
+                            Travel Trade
+                            <br>
+                            Business Events
+                            <br>
+                            Corporate Website
+                            <br>
+                            Tourism Business Database
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <img src="./imgs/nz-tourism.webp" alt="New Zealand Tourism Logo">
+                    </div>
+                </footer>
+            </div>
+            <!-- End of Slide 1 -->
+
+            <!-- Slide 2 - FILTERED CARD OUTPUT -->
+            <div class="slide">
+                <header class="property-page-header">
+                    <h1> TAHA MOANA </h1>
+                </header>
+                <div class="button-section">
+                    <button class="back-button" id="toForm"><i class="fa-solid fa-arrow-left"></i></button>
+                    <div class="sort-button-container">
+                        <button class="sort-button" id="sortHighToLow">$$$-$</button>
+                        <button class="sort-button" id="sortLowToHigh">$-$$$</button>
+                    </div>
+                    
+                </div>
+                <div id="results"></div>
+                
+                <footer>
+                    <div class="footer-section">
+                        <h3>Find us on</h3>
+                        <p><i class="fa-brands fa-x-twitter"></i> X 
+                            <br>
+                            <i class="fa-brands fa-instagram"></i> Instagram 
+                            <br>
+                            <i class="fa-brands fa-facebook"></i> Facebook 
+                            <br>
+                            <i class="fa-brands fa-youtube"></i> Youtube
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Contact Us</h3>
+                        <p>Site Feedback
+                            <br>
+                            Need Help?  
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Help</h3>
+                        <p>FAQ
+                            <br>
+                            About Us
+                            <br>
+                            Adding your business
+                            <br>
+                            Terms of Use
+                            <br>
+                            Privacy Policy
+                            <br>
+                            Cookies
+                            <br>
+                            Manage privacy settings
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Our other Sites</h3>
+                        <p> Media
+                            <br>
+                            newzealand.com 
+                            <br>
+                            The Visual Library
+                            <br>
+                            Travel Trade
+                            <br>
+                            Business Events
+                            <br>
+                            Corporate Website
+                            <br>
+                            Tourism Business Database
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <img src="./imgs/nz-tourism.webp" alt="New Zealand Tourism Logo">
+                    </div>
+                </footer>
+            </div>
+
+            <!-- Slide 3 - SELECTED CARD OUTPUT -->
+            <div class="slide">
+                <button class="back-button" id="toProperties"><i class="fa-solid fa-arrow-left"></i></button>
+                
+                <div id="selectedOutput">
+
+                </div>
+                <footer>
+                    <div class="footer-section">
+                        <h3>Find us on</h3>
+                        <p><i class="fa-brands fa-x-twitter"></i> X 
+                            <br>
+                            <i class="fa-brands fa-instagram"></i> Instagram 
+                            <br>
+                            <i class="fa-brands fa-facebook"></i> Facebook 
+                            <br>
+                            <i class="fa-brands fa-youtube"></i> Youtube
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Contact Us</h3>
+                        <p>Site Feedback
+                            <br>
+                            Need Help?  
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Help</h3>
+                        <p>FAQ
+                            <br>
+                            About Us
+                            <br>
+                            Adding your business
+                            <br>
+                            Terms of Use
+                            <br>
+                            Privacy Policy
+                            <br>
+                            Cookies
+                            <br>
+                            Manage privacy settings
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Our other Sites</h3>
+                        <p> Media
+                            <br>
+                            newzealand.com 
+                            <br>
+                            The Visual Library
+                            <br>
+                            Travel Trade
+                            <br>
+                            Business Events
+                            <br>
+                            Corporate Website
+                            <br>
+                            Tourism Business Database
+                        </p>
+                    </div>
+                    <div class="footer-section">
+                        <img src="./imgs/nz-tourism.webp" alt="New Zealand Tourism Logo">
+                    </div>
+                </footer>
+            </div>
+
+        </div>
+    </div>
+    
+    <!-- JS LINKS -->
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/ff75b7e563.js" crossorigin="anonymous"></script>
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Jquery UI -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"></script>
+    <!-- FullPage JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.22/fullpage.min.js"
+        integrity="sha512-yHHLi2ZwgtW9QNVZd0asqMyWGJ6Kx73ijKlGWSi3MwYFB5ZzOJV8wPtopKr6muHk5SERgF3OB/2dZj3StlI34w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- MapBox -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+    <!-- Custom JS -->
+    <script src="./js/script.min.js"></script>
+
+</body>
+
+</html>
